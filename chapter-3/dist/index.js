@@ -104,7 +104,89 @@ squareOf(5);
     let a;
     a = {
         b: 1,
-        c: 2
     };
+    // let i: number
+    // Variable 'i' is used before being assigned.
+    // let i
+    // Object is possibly 'undefined'.
+    // let j = i * 3
+})();
+(() => {
+    let a;
+    a = { b: 1 };
+    a = { b: 1, c: undefined };
+    a = { b: 1, c: "d" };
+    a = { b: 1, 10: true };
+    a = { b: 1, 10: true, 20: true };
+    // a = {10: true} Property 'b' is missing
+    // a = {b: 1, 33: 'red'} Type 'string' is not assignable to type 'boolean'
+    let airplaneSeatingAssignments = {
+        "34D": "Boris Cherny",
+        "34E": "Bill Gates"
+    };
+    console.log(airplaneSeatingAssignments);
+    let user = {
+        firstName: "abby"
+    };
+    console.log(user.firstName);
+    // user.firstName = "kkdosk" Cannot assign to 'firstName' because it is a read-only property.
+    let danger = {};
+    danger = {};
+    danger = { x: 1 };
+    danger = [];
+    danger = 2;
+    // danger = null 
+    // danger = undefined TS2322: Type 'undefined' is not assignable to type '{}'.
+})();
+// type aliases
+(() => {
+    let age = 55;
+    let driver = {
+        age,
+        name: "James May"
+    };
+    // type Color = "blue"
+    let x = Math.random() < .5;
+    if (x) {
+        let b = "blue";
+    }
+    else {
+        let b = "red";
+    }
+})();
+// union and intersection
+(() => {
+    let a = {
+        name: "Bonkers",
+        purrs: true
+    };
+    a = {
+        barks: true,
+        name: "Domino",
+        wags: true
+    };
+    a = {
+        barks: true,
+        name: "Donkers",
+        purrs: true,
+        wags: true
+    };
+    let b = {
+        barks: true,
+        name: "Domino",
+        purrs: true,
+        wags: true
+    };
+    function trueOrNull(isTrue) {
+        if (isTrue) {
+            return "true";
+        }
+        return null;
+    }
+    console.log(trueOrNull(true));
+    function returns(param) {
+        return param;
+    }
+    console.log(returns(null));
 })();
 //# sourceMappingURL=index.js.map

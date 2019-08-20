@@ -124,6 +124,138 @@ squareOf(5);
   let a: {b: number}
   a = {
     b: 1,
-    c: 2
+    // c: 2
+    // TS2322: Type '{ b: number; c: number; }' is not assignable to type '{ b: number; }'.
+    // Object literal may only specify known properties, and 'c' does not exist in type '{ b: number; }'.
+  }
+
+  // let i: number
+  // Variable 'i' is used before being assigned.
+  // let i
+  // Object is possibly 'undefined'.
+  // let j = i * 3
+})();
+
+(() => {
+  let a : {
+    b: number
+    c?: string
+    [key: number]: boolean
+  }
+
+  a = {b: 1}
+  a = {b: 1, c: undefined}
+  a = {b: 1, c: "d"}
+  a = {b: 1, 10: true}
+  a = {b: 1, 10: true, 20: true}
+  // a = {10: true} Property 'b' is missing
+
+  // a = {b: 1, 33: 'red'} Type 'string' is not assignable to type 'boolean'
+
+  let airplaneSeatingAssignments: {
+    [seatNumber: string]: string
+  } = {
+    "34D": "Boris Cherny",
+    "34E": "Bill Gates"
+  }
+  console.log(airplaneSeatingAssignments)
+
+  let user: {
+    readonly firstName: string
+  } = {
+    firstName: "abby"
+  }
+
+  console.log(user.firstName)
+  // user.firstName = "kkdosk" Cannot assign to 'firstName' because it is a read-only property.
+
+  let danger = {}
+  danger = {}
+  danger = {x: 1}
+  danger = []
+  danger = 2
+
+  // danger = null 
+  // danger = undefined TS2322: Type 'undefined' is not assignable to type '{}'.
+})();
+
+// type aliases
+
+(() => {
+  type Age = number
+
+  type Person = {
+    name: string
+    age: Age
+  }
+
+  let age: Age = 55
+
+  let driver: Person = {
+    age,
+    name: "James May"
+  }
+
+  type Color = "red"
+  // type Color = "blue"
+
+  let x = Math.random() < .5
+
+  if (x) {
+    type Color = "blue"
+    let b: Color = "blue"
+  } else {
+    let b: Color = "red"
   }
 })();
+
+// union and intersection
+
+(() => {
+  type Cat = { name: string, purrs: boolean }
+  type Dog = { name: string, barks: boolean, wags: boolean }
+
+  type CatOrDogOrBoth = Cat | Dog
+  type CatAndDog = Cat & Dog
+
+  let a: CatOrDogOrBoth = {
+    name: "Bonkers",
+    purrs: true
+  }
+
+  a = {
+    barks: true,
+    name: "Domino",
+    wags: true
+  }
+
+  a = {
+    barks: true,
+    name: "Donkers",
+    purrs: true,
+    wags: true
+  }
+
+  let b: CatAndDog = {
+    barks: true,
+    name: "Domino",
+    purrs: true,
+    wags: true
+  }
+
+  function trueOrNull(isTrue: boolean) {
+    if (isTrue) {
+      return "true"
+    }
+    return null
+  }
+
+  console.log(trueOrNull(true))
+
+  type Returns = string | null
+  function returns(param: Returns) {
+    return param
+  }
+
+  console.log(returns(null))
+})()
