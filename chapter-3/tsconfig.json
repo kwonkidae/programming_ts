@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"lib": ["es2018", "esnext"],
+		"module": "commonjs",
+		"outDir": "dist",
+		"sourceMap": true,
+		"strict": true,
+    "target": "esnext",
+    "noImplicitAny": false
+	},
+	"include": [
+		"src"
+  ]
+}
