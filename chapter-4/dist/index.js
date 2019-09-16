@@ -82,8 +82,47 @@ const l = console.log;
     }
     times(f, 4);
     let reserve = (from, toOrDestination, destination) => {
-        return 1;
+        if (toOrDestination instanceof Date && destination !== undefined) {
+            return 1;
+        }
+        else if (typeof toOrDestination === "string") {
+            return 2;
+        }
+        else {
+            return 3;
+        }
     };
-    l(reserve(new Date(), new Date()));
+    l(reserve(new Date(), ""));
+})();
+(() => {
+    // function interface
+    function warnUser() {
+        const warn = ((warning) => { console.log(warning); });
+        warn.wasCalled = false;
+        return warn;
+    }
+    const c = warnUser();
+    c("warning");
+    // let warnUser: IWarnUser = (warning: string) => {
+    //   if (warnUser.wasCalled) {
+    //     return
+    //   }
+    //   warnUser.wasCalled = true
+    //   console.log(warning)
+    // }
+})();
+// polymorphism
+(() => {
+    // function filter(array, f) {
+    //   const result: number[] = [];
+    //   for (let i = 0; i < array.length; i++) {
+    //     let item = array[i]
+    //     if (f(item)) {
+    //       result.push(item)
+    //     }
+    //   }
+    //   return result
+    // }
+    // l(filter([1, 2, 3, 4], _ => _ < 3))
 })();
 //# sourceMappingURL=index.js.map
