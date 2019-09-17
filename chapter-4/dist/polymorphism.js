@@ -72,6 +72,18 @@ const l = console.log;
     function fill(length, value) {
         return Array.from({ length }, () => value);
     }
-    l(call(fill, 10, 5));
+    l(call(fill, 10, "a"));
+    function is(...args) {
+        let result = false;
+        for (let i = 0; i < args.length - 1; i++) {
+            result = args[i] === args[i + 1];
+        }
+        return result;
+    }
+    l(is("string", "otherstring"));
+    l(is(true, false));
+    l(is(42, 42));
+    // l(is(10, "foo"))
+    l(is([1], [1]));
 })();
 //# sourceMappingURL=polymorphism.js.map

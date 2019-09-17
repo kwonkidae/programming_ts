@@ -123,4 +123,18 @@ const l = console.log;
   }
 
   l(call(fill, 10, "a"))
+
+  function is<T>(...args: T[]) {
+    let result = false;
+    for (let i = 0; i < args.length - 1 ; i++) {
+      result = args[i] === args[i + 1];
+    }
+    return result
+  }
+
+  l(is("string", "otherstring"))
+  l(is(true, false))
+  l(is(42, 42))
+  // l(is(10, "foo"))
+  l(is([1], [1]))
 })();
