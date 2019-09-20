@@ -1,2 +1,3 @@
 // import "./chess"
-import "./interface"
+// import "./interface"
+import "./polymorphism"

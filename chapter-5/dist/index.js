@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 // import "./chess"
-require("./interface");
+// import "./interface"
+require("./polymorphism");
 //# sourceMappingURL=index.js.map
