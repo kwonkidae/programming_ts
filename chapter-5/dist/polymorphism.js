@@ -73,5 +73,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     const payload = new DecoratedAPIPayload();
     console.log(payload.serialize());
 })();
-// Decorator
+(() => {
+    // Simulating final Classes
+    class MessageQueue {
+        constructor(messages) {
+            this.messages = messages;
+        }
+        static create(messages) {
+            return new MessageQueue(messages);
+        }
+    }
+    // class BadQueue extends MessageQueue {}
+    MessageQueue.create([]);
+})();
 //# sourceMappingURL=polymorphism.js.map

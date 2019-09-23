@@ -79,4 +79,16 @@
   console.log (payload.serialize())
 })();
 
+(() => {
+  // Simulating final Classes
+  class MessageQueue {
+    public static create(messages: string[]) {
+      return new MessageQueue(messages)
+    }
+    private constructor(private messages: string[]) {}
 
+  }
+
+  // class BadQueue extends MessageQueue {}
+  MessageQueue.create([])
+})();
