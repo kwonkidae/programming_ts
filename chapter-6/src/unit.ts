@@ -13,4 +13,25 @@
   }
   console.log(parseUnit('10cm'));
 
+  interface IWidth {
+    unit: Unit;
+    value: number;
+  }
+
+  function parseWidth(width: number | string | null | undefined): IWidth | null {
+    if (width == null) {
+      return null;
+    }
+
+    if (typeof width === 'number') {
+      return {unit: 'px', value: width};
+    }
+
+    const unit = parseUnit(width);
+    if (unit) {
+      return {unit, value: parseFloat(width)};
+    }
+
+    return null;
+  }
 })();
