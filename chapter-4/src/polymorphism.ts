@@ -123,4 +123,10 @@ const l = console.log;
   }
 
   l(call(fill, 10, "a"))
+
+  // type IntersectionType1 = unknown & null;       // null
+  // type IntersectionType2 = unknown & undefined;  // undefined
+  // type IntersectionType3 = unknown & string;     // string
+  // type IntersectionType4 = unknown & number[];   // number[]
+  // type IntersectionType5 = unknown & any;        // any
 })();
