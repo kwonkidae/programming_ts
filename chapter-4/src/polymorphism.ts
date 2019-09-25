@@ -124,9 +124,26 @@ const l = console.log;
 
   l(call(fill, 10, "a"))
 
+<<<<<<< HEAD
   // type IntersectionType1 = unknown & null;       // null
   // type IntersectionType2 = unknown & undefined;  // undefined
   // type IntersectionType3 = unknown & string;     // string
   // type IntersectionType4 = unknown & number[];   // number[]
   // type IntersectionType5 = unknown & any;        // any
 })();
+=======
+  function is<T>(...args: T[]) {
+    let result = false;
+    for (let i = 0; i < args.length - 1 ; i++) {
+      result = args[i] === args[i + 1];
+    }
+    return result
+  }
+
+  l(is("string", "otherstring"))
+  l(is(true, false))
+  l(is(42, 42))
+  // l(is(10, "foo"))
+  l(is([1], [1]))
+})();
+>>>>>>> 8c0a0343f4f5357c09b9eca5de80b00e466f3dfc
