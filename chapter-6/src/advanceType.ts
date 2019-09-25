@@ -112,4 +112,11 @@
     baseURL: 'https://api.mysite.com',
     tierr: 'prod',
   } as IOptions);
+
+  type Account = {
+    id: number
+    isEmployee: boolean
+    notes: string[]
+  }
 })();
+
