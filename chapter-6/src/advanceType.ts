@@ -167,4 +167,9 @@
   console.log(get(activityLog, 'events', 0, 'type'));
   console.log(get(activityLog, 'lastEvent'));
 
+  interface IAccount {
+    id: number;
+    isEmployee: boolean;
+    notes: string[];
+  }
 })();
