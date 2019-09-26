@@ -86,5 +86,16 @@
         baseURL: 'https://api.mysite.com',
         tierr: 'prod',
     });
+    const activityLog = {
+        events: [{ id: 'abcd', timestamp: new Date(), type: 'Read' }],
+        lastEvent: new Date(),
+    };
+    const get = (object, ...keys) => {
+        let result = object;
+        keys.forEach((k) => result = result[k]);
+        return result;
+    };
+    console.log(get(activityLog, 'events', 0, 'type'));
+    console.log(get(activityLog, 'lastEvent'));
 })();
 //# sourceMappingURL=advanceType.js.map
