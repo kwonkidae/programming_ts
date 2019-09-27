@@ -1,3 +1,4 @@
 // import './advanceType';
 // import './unit';
-import './advanceType';
+// import './advanceType';
+import './advancedFunction';

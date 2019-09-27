@@ -2,5 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 // import './advanceType';
 // import './unit';
-require("./advanceType");
+// import './advanceType';
+require("./advancedFunction");
 //# sourceMappingURL=index.js.map

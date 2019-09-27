@@ -67,9 +67,9 @@
     const d = { x: 3 };
 })();
 (() => {
-    let a = null;
-    a = 3;
-    a = 'b';
+    const a = null;
+    // a = 3;
+    // a = 'b';
     // tslint:disable-next-line:no-console
     console.log(a);
     // tslint:disable-next-line:max-classes-per-file

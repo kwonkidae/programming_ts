@@ -86,9 +86,9 @@
 })();
 
 (() => {
-  let a = null;
-  a = 3;
-  a = 'b';
+  const a = null;
+  // a = 3;
+  // a = 'b';
   // tslint:disable-next-line:no-console
   console.log(a);
 
@@ -167,9 +167,46 @@
   console.log(get(activityLog, 'events', 0, 'type'));
   console.log(get(activityLog, 'lastEvent'));
 
+  type Weekday = 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri';
+  type Day = Weekday | 'Sat' | 'Sun';
+
+  // const nextDay: Record<Weekday, Day> = {
+  //   Fri: 'Fri',
+  //   Mon: 'Tue',
+  //   Thu: 'Thu',
+  //   Tue: 'Tue',
+  //   Wed: 'Wed',
+  // };
+
+  // error TS2739: Type '{ Mon: "Tue"; }' is missing the following properties from type
+  // '{ Mon: Day; Tue: Day; Wed: Day; Thu: Day; Fri: Day; }': Tue, Wed, Thu, Fri
+  // const nextDay: {[K in Weekday]: Day} = {
+  //   Mon: 'Tue',
+  // };
+
   interface IAccount {
     id: number;
     isEmployee: boolean;
     notes: string[];
   }
+
+  type OptionalAccount = {
+    [K in keyof IAccount]?: IAccount[K]
+  };
+
+  type NullableAccount = {
+    [K in keyof IAccount]: IAccount[K] | null
+  };
+
+  type ReadonlyAccount = {
+    readonly [K in keyof IAccount]: IAccount[K]
+  };
+
+  type Account2 = {
+    -readonly [K in keyof ReadonlyAccount]: IAccount[K]
+  };
+
+  type Account3 = {
+    [K in keyof OptionalAccount]-?: IAccount[K]
+  };
 })();
