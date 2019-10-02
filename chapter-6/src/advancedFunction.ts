@@ -22,10 +22,10 @@
     }
   }
 
-  type IsString<T> = T extends string ? true : false;
-  type A = IsString<string>;
-  const a: A = true;
-  console.log(a);
+  // type IsString<T> = T extends string ? true : false;
+  // type A = IsString<string>;
+  // const a: A = true;
+  // console.log(a);
 
   // type ElementType<T> = T extends Array<infer U> ? U : T;
   // type B = ElementType<number[]>;
@@ -37,6 +37,44 @@
 
   type A = SecondArg<F>;
 
-  console.log(F);
+})();
 
+(() => {
+  function formatInput(input: string) {
+
+  }
+
+  function getUserInput(): string | number {
+    return 'a';
+  }
+
+  const input = getUserInput();
+
+  formatInput(input as string);
+
+  function addToList(list: string[], item: string) {
+
+  }
+
+  addToList('this is really' as any, 'really unsage');
+
+  let userId!: string;
+  fetchUser();
+
+  userId.toUpperCase();
+
+  function fetchUser() {
+    userId = 'kkdosk';
+  }
+  console.log(userId.toUpperCase());
+
+  type CompanyID = string;
+  type UserID = string;
+
+  function queryForUser(id: UserID) {
+
+  }
+
+  const id: CompanyID = 'basdfas';
+  queryForUser(id);
 })();

@@ -16,9 +16,24 @@
             formattedInput = input.toUpperCase();
         }
     }
-    const a = true;
-    console.log(a);
-    const typeB = 5;
-    console.log(typeB);
+})();
+(() => {
+    function formatInput(input) {
+    }
+    function getUserInput() {
+        return 'a';
+    }
+    const input = getUserInput();
+    formatInput(input);
+    function addToList(list, item) {
+    }
+    addToList('this is really', 'really unsage');
+    let userId;
+    fetchUser();
+    userId.toUpperCase();
+    function fetchUser() {
+        userId = 'kkdosk';
+    }
+    console.log(userId.toUpperCase());
 })();
 //# sourceMappingURL=advancedFunction.js.map
