@@ -67,9 +67,9 @@
     const d = { x: 3 };
 })();
 (() => {
-    let a = null;
-    a = 3;
-    a = 'b';
+    const a = null;
+    // a = 3;
+    // a = 'b';
     // tslint:disable-next-line:no-console
     console.log(a);
     // tslint:disable-next-line:max-classes-per-file
@@ -86,5 +86,16 @@
         baseURL: 'https://api.mysite.com',
         tierr: 'prod',
     });
+    const activityLog = {
+        events: [{ id: 'abcd', timestamp: new Date(), type: 'Read' }],
+        lastEvent: new Date(),
+    };
+    const get = (object, ...keys) => {
+        let result = object;
+        keys.forEach((k) => result = result[k]);
+        return result;
+    };
+    console.log(get(activityLog, 'events', 0, 'type'));
+    console.log(get(activityLog, 'lastEvent'));
 })();
 //# sourceMappingURL=advanceType.js.map

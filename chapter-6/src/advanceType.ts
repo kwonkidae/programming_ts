@@ -86,9 +86,9 @@
 })();
 
 (() => {
-  let a = null;
-  a = 3;
-  a = 'b';
+  const a = null;
+  // a = 3;
+  // a = 'b';
   // tslint:disable-next-line:no-console
   console.log(a);
 
@@ -113,10 +113,100 @@
     tierr: 'prod',
   } as IOptions);
 
-  type IAccount = {
-    id: number
-    isEmployee: boolean
-    notes: string[]
+  interface IAPIResponse {
+    user: {
+      userId: string
+      friendList: IFriedLis,
+    };
   }
-})();
 
+  interface IFriedLis {
+    count: number;
+    friends: Array<{
+      firstName: string
+      lastName: string,
+    }>;
+  }
+
+  type ResponseKeys = keyof IAPIResponse;
+  type UserKeys = keyof IAPIResponse['user'];
+  type FriendsKeys = keyof IAPIResponse['user']['friendList'];
+
+  interface IActivityLog {
+    lastEvent: Date;
+    events: Array<{
+      id: string
+      timestamp: Date
+      type: 'Read' | 'Write',
+    }>;
+  }
+
+  const activityLog: IActivityLog = {
+    events: [{id: 'abcd', timestamp: new Date(), type: 'Read'}],
+    lastEvent: new Date(),
+  };
+
+  interface IGet {
+    <O extends object,
+    K1 extends keyof O>(o: O, k1: K1): O[K1];
+    <O extends object, K1 extends keyof O, K2 extends keyof O[K1]
+    >(o: O, k1: K1, k2: K2): O[K1][K2];
+    <O extends object,
+    K1 extends keyof O,
+    K2 extends keyof O[K1],
+    K3 extends keyof O[K1][K2]
+    >(o: O, k1: K1, k2: K2, k3: K3): O[K1][K2][K3];
+  }
+
+  const get: IGet = (object: any, ...keys: string[]) => {
+    let result = object;
+    keys.forEach((k) => result = result[k]);
+    return result;
+  };
+
+  console.log(get(activityLog, 'events', 0, 'type'));
+  console.log(get(activityLog, 'lastEvent'));
+
+  type Weekday = 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri';
+  type Day = Weekday | 'Sat' | 'Sun';
+
+  // const nextDay: Record<Weekday, Day> = {
+  //   Fri: 'Fri',
+  //   Mon: 'Tue',
+  //   Thu: 'Thu',
+  //   Tue: 'Tue',
+  //   Wed: 'Wed',
+  // };
+
+  // error TS2739: Type '{ Mon: "Tue"; }' is missing the following properties from type
+  // '{ Mon: Day; Tue: Day; Wed: Day; Thu: Day; Fri: Day; }': Tue, Wed, Thu, Fri
+  // const nextDay: {[K in Weekday]: Day} = {
+  //   Mon: 'Tue',
+  // };
+
+  interface IAccount {
+    id: number;
+    isEmployee: boolean;
+    notes: string[];
+  }
+
+  type OptionalAccount = {
+    [K in keyof IAccount]?: IAccount[K]
+  };
+
+  type NullableAccount = {
+    [K in keyof IAccount]: IAccount[K] | null
+  };
+
+  type ReadonlyAccount = {
+    readonly [K in keyof IAccount]: IAccount[K]
+  };
+
+  type Account2 = {
+    -readonly [K in keyof ReadonlyAccount]: IAccount[K]
+  };
+
+  type Account3 = {
+    [K in keyof OptionalAccount]-?: IAccount[K]
+  };
+})();
