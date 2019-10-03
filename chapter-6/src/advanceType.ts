@@ -113,7 +113,7 @@
     tierr: 'prod',
   } as IOptions);
 
-  type Account = {
+  type IAccount = {
     id: number
     isEmployee: boolean
     notes: string[]
