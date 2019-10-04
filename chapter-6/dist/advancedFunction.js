@@ -35,5 +35,15 @@
         userId = 'kkdosk';
     }
     console.log(userId.toUpperCase());
+    function queryForUser(id) {
+    }
+    const id = 'basdfas';
+    queryForUser(id);
+    function RCompany(id) {
+        let a;
+        return a;
+    }
+    const rC = RCompany('kkdosk');
+    console.log(rC);
 })();
 //# sourceMappingURL=advancedFunction.js.map

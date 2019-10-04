@@ -77,4 +77,14 @@
 
   const id: CompanyID = 'basdfas';
   queryForUser(id);
+
+  type RCompanyID = string & { readonly brand: unique symbol; };
+
+  function RCompany(id: string) {
+    let a: unknown;
+    return a  as RCompanyID;
+  }
+
+  const rC = RCompany('kkdosk');
+  console.log(rC);
 })();
