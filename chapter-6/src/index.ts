@@ -1,4 +1,5 @@
 
+import './advancedFunction';
 import './advanceType';
 // import './unit';
 // import './advanceType';
@@ -6,4 +7,3 @@ import './advanceType';
 // import './advanceType';
 // import './advancedFunction';
 import './zip';
-// import './advancedFunction';
