@@ -3,7 +3,7 @@
     "outDir": "./dist/",
     // "noImplicitAny": true,
     "module": "es6",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "moduleResolution": "node",
     "target": "es6",
     "allowJs": true,

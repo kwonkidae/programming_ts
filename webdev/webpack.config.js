@@ -5,12 +5,12 @@ module.exports = {
   devtool: 'inline-source-map',
   mode: 'development',
   module: {
-    rules: [
-      {
-        test: /\.worker\.tsx?$/,
-        use: 'worker-loader' 
-      }
-    ],
+    // rules: [
+    //   {
+    //     test: /\.worker\.tsx?$/,
+    //     use: 'worker-loader' 
+    //   }
+    // ],
     rules: [
       {
         test: /\.tsx?$/,
@@ -29,12 +29,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-     title: 'webdev',
-     minify: {
-      collapseWhitespace: true
-     },
-     hash: true,
-     template: './src/index.html'
+      inject: false,
+      template: path.join(__dirname, './src/index.html')
     })
    ]
 };
