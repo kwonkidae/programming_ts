@@ -5,6 +5,10 @@ import './chapter1';
 // import './MainThread';
 
 ReactDOM.render(
-  <h1>Hello, world!!</h1>,
+  <div>
+    <button id='start-button'>start</button>
+    <button id='stop-button'>stop</button>
+    <div className='output'></div>
+  </div>,
   document.getElementById('root')
 );

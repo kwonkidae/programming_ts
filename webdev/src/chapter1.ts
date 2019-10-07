@@ -1,5 +1,6 @@
-import { Observable, interval } from 'rxjs';
-
+import { Observable, interval, fromEvent } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
+/*
 (() => {
   let tenthSecond$ = new Observable(observer => {
     let counter = 0;
@@ -29,5 +30,34 @@ import { Observable, interval } from 'rxjs';
   }, 1000)
   
 })();
+(() => {
+  let tenthSecond$ = interval(100);
+  tenthSecond$
+  .pipe(
+    map(num => num / 10)
+  )
+  .subscribe(console.log);
+})();
+*/
+(() => {
+  setTimeout(() => {
+    const startButton = document.querySelector('#start-button');
+    const stopButton = document.querySelector('#stop-button');
+    let resultsArea = document.querySelector<HTMLElement>('.output');
+    console.log(resultsArea);
+    let tenthSecond$ = interval(100);
+    let startClick$ = fromEvent(startButton, 'click');
+    let stopClick$ = fromEvent(stopButton, 'click');
+  
+    startClick$.subscribe(() => {
+      tenthSecond$
+        .pipe(
+          map(item => (item / 10)),
+          takeUntil(stopClick$)
+        )
+        .subscribe(num => resultsArea.innerHTML = num + 's')
+    });
+  
+  }, 1000);
 
-
+})();
