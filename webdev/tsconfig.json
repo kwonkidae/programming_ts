@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    // "noImplicitAny": true,
+    "module": "es6",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "target": "es6",
+    "allowJs": true,
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": ["dom", "es2015", "webworker", "es2015", "es2017"]
+  }
+}

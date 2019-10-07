@@ -6,7 +6,8 @@
 		"sourceMap": true,
 		"noImplicitAny": false,
 		"strict": true,
-		"target": "es2015"
+		"target": "es2015",
+		"esModuleInterop": true
 	},
 	"include": [
 		"src"

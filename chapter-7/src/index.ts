@@ -1,3 +1,22 @@
+import EventEmitter from 'events';
+
+(() => {
+  type CCC = Record<symbol, unknown[]>;
+
+  const tA: CCC = {1: [1, 2, 3]};
+
+  console.log(tA);
+  class SafeEmiiter<Events extends Record<PropertyKey, unknown[]>> {
+    private emitter = new EventEmitter();
+    public emit<K extends string>(
+      channel: K,
+      ...data: Events[K]
+    ) {
+      return this.emitter.emit(channel, ...data);
+    }
+  }
+})();
+
 (() => {
   function flatten<T>(array: T[][]): T[] {
     console.log(array);

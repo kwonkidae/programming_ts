@@ -1,4 +1,18 @@
 "use strict";
+// import EventEmitter from 'events';
+(() => {
+    const tA = { 1: [1, 2, 3] };
+    console.log(tA);
+    // class SafeEmiiter<Events extends Record<PropertyKey, unknown[]>> {
+    //   private emitter = new EventEmitter();
+    //   public emit<K extends keyof Events>(
+    //     channel: K,
+    //     ...data: Events[K]
+    //   ) {
+    //     return this.emitter.emit(channel, ...data);
+    //   }
+    // };
+})();
 (() => {
     function flatten(array) {
         console.log(array);
