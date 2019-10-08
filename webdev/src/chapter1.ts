@@ -1,5 +1,5 @@
 import { Observable, interval, fromEvent } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { map, takeUntil, tap } from 'rxjs/operators';
 /*
 (() => {
   let tenthSecond$ = new Observable(observer => {
@@ -53,7 +53,7 @@ import { map, takeUntil } from 'rxjs/operators';
       tenthSecond$
         .pipe(
           map(item => (item / 10)),
-          takeUntil(stopClick$)
+          takeUntil(stopClick$.pipe(tap(() => { resultsArea.innerHTML = ''; })))
         )
         .subscribe(num => resultsArea.innerHTML = num + 's')
     });
