@@ -38,7 +38,6 @@ import { map, takeUntil, tap } from 'rxjs/operators';
   )
   .subscribe(console.log);
 })();
-*/
 (() => {
   setTimeout(() => {
     const startButton = document.querySelector('#start-button');
@@ -60,4 +59,32 @@ import { map, takeUntil, tap } from 'rxjs/operators';
   
   }, 1000);
 
+})();
+*/
+
+(() => {
+  setTimeout(() => {
+    const draggable = <HTMLElement>document.querySelector('#draggable');
+    const mouseDown$ = fromEvent<MouseEvent>(draggable, 'mousedown');
+    const mouseMove$ = fromEvent<MouseEvent>(document, 'mousemove');
+    const mouseUp$ = fromEvent<MouseEvent>(document, 'mouseup');
+
+    mouseDown$.subscribe(() => {
+      mouseMove$
+      .pipe(
+        map(event => {
+          event.preventDefault();
+          return {
+            x: event.clientX,
+            y: event.clientY
+          };
+        }),
+        takeUntil(mouseUp$)
+      )
+      .subscribe(pos => {
+        draggable.style.left = pos.x + 'px';
+        draggable.style.top = pos.y + 'px';
+      })
+    });
+  }, 1000);
 })();
