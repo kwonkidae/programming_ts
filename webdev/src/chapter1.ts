@@ -1,5 +1,5 @@
 import { Observable, interval, fromEvent } from 'rxjs';
-import { map, takeUntil, tap } from 'rxjs/operators';
+import { map, takeUntil, tap, delay, take } from 'rxjs/operators';
 /*
 (() => {
   let tenthSecond$ = new Observable(observer => {
@@ -60,8 +60,6 @@ import { map, takeUntil, tap } from 'rxjs/operators';
   }, 1000);
 
 })();
-*/
-
 (() => {
   setTimeout(() => {
     const draggable = <HTMLElement>document.querySelector('#draggable');
@@ -88,3 +86,55 @@ import { map, takeUntil, tap } from 'rxjs/operators';
     });
   }, 1000);
 })();
+(() => {
+  const tSecond$ = interval(100);
+  const uT = tSecond$.subscribe(console.log);
+  // unsubscribe
+  uT.add((val) => {
+    console.log('first unsubscribe');
+  });
+
+  uT.add(() => {
+    console.log('second unsubscribe');
+  });
+
+  setTimeout(() => {
+    uT.unsubscribe();
+  }, 500);
+})();
+*/
+import { of, merge } from 'rxjs';
+(() => {
+  of('hello', 'world', '!')
+  .subscribe(console.log)
+})();
+
+(() => {
+  of(1, 2, 3)
+  .pipe(
+    delay(1000)
+  )
+  .subscribe(console.log);
+  
+  let oneSecond$ = of('one').pipe(delay(1000));
+  let twoSecond$ = of('two').pipe(delay(2000));
+  let threeSecond$ = of('three').pipe(delay(3000));
+  let fourSecond$ = of('four').pipe(delay(4000));
+
+  merge(
+    oneSecond$,
+    twoSecond$,
+    threeSecond$,
+    fourSecond$
+  )
+  .subscribe(console.log);
+
+  interval(1000)
+    .pipe(
+      take(5),
+      map(val => val * 5),
+      delay(500)
+    )
+    .subscribe(console.log)
+})();
+
