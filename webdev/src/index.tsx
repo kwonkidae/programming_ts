@@ -10,6 +10,7 @@ ReactDOM.render(
     <button id='start-button'>start</button>
     <button id='stop-button'>stop</button>
     <input type='text' id='input_text' ></input>
+    <input type='button' id='button_click' ></input>
     <div className='output'></div>
     <div id='draggable' style={{'width': '100px',  'height': '100px', 'backgroundColor': 'red'}}></div>
   </div>,
