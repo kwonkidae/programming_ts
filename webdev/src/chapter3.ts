@@ -2,7 +2,6 @@ import { ajax } from 'rxjs/ajax';
 import { map, mergeMap, retry } from 'rxjs/operators';
 import { throwError, interval, from, of, merge } from 'rxjs';
 (() => {
-  console.log('chapter3');
   ajax('http://www.lvh.me:9000/api/lawyers/realcount')
   .pipe(
     map(response => response.response)

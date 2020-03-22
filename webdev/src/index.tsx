@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import { interval } from 'rxjs';
 // import './chapter1';
 // import './MainThread';
-import './chapter2';
-import './chapter3';
+// import './chapter2';
+// import './chapter3';
+import './chapter4';
 ReactDOM.render(
   <div>
     <button id='start-button'>start</button>
